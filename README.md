@@ -1,2 +1,2 @@
 # JetsHoppers
-The configuration files for my JetsHoppers plugin
+The configuration files + API for my JetsHoppers plugin
