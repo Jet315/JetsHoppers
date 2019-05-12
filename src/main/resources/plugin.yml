@@ -1,0 +1,13 @@
+name: JetsHoppers
+version: 1.0.0
+description: A way to implement cool Hoppers!
+author: Jet315
+website: https://www.spigotmc.org/members/jet315.15295/
+main: me.jet315.jetshoppers.JetsHoppersPlugin
+load: POSTWORLD
+softdepend: [Vault,Multiverse]
+api-version: 1.14
+commands:
+  jetshoppers:
+    description: The base command for the Hoppers's plugin
+    aliases: [hopper,hoppers,jetshopper]

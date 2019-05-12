@@ -1,0 +1,278 @@
+# GUI config
+
+# I have tried creating this file as easy to use as possible (Join our discord via the Spigot Page if you have an issues)
+
+# Use 1.13 Material names - Plugin will change to 1.8 if needed.
+HopperInventory:
+  slots: 27 #Must be a multiple of 9
+  GUIName: "&bHopper"
+  Items:
+
+#A simple filler to fill the inventory
+    FillerItem:
+      type: GRAY_STAINED_GLASS_PANE
+      name: " "
+      slot: -1 # No slot needed for filler
+      condition: NONE #The condition is a way of deciding whether the item gets shown in a slot or not, see below for examples
+      action: FILLER #Actions NONE, LINK (To link chest), FILTER (filter page), TELEPORT (to enable/disable teleporting), FILLER (To fill inventory)
+      lore: []
+
+#The Link Button:
+    LinkHopperItemNoPermission:
+      type: CHEST
+      name: "&cLink Hopper/Chest"
+      slot: 10
+      condition: NOPERMISSION #Conditions for the action LINK can be NOPERMISSION, LINKED, LINK
+      action: LINK
+      lore:
+        - "&cYou do not have the"
+        - "&crequired permission &4(jetshoppers.default.linkchest)"
+        - "&cneeded to link a chest"
+    LinkHopperAlreadyLinked:
+      type: CHEST
+      name: "&cLink Hopper/Chest"
+      slot: 10
+      condition: LINKED
+      action: LINK
+      lore:
+        - "&aClick this to &cunlink"
+        - "&athe attached container!"
+        - "&7(Right-Click)"
+    LinkHopperLink:
+      type: CHEST
+      name: "&cLink Hopper/Chest"
+      slot: 10
+      condition: LINK
+      action: LINK
+      lore:
+        - "&aClick this to link"
+        - "&aa chest/hopper to this hopper!"
+        - "&7(Right-Click)"
+#The Upgrade button (also used to see stats)
+#Placeholders available:
+# %TIER% - Returns it's current Tier (level name in config file)
+# %HOPPERSUCTIONRANGE% - returns <x>x<y>x<z> of the hoppers suction range
+# %HOPPERCONNECTIONRANGE% - returns how far a chest can be linked
+# %SECONDSPERPICKUP% - returns the number of seconds the hopper picks up items
+# %LINKED% - True or false, depending on whether the hopper has a linked container
+#
+# %UPGRADED-HOPPERSUCTIONRANGE% - Returns the upgraded stat (the stats of the hopper upgraded)
+# %UPGRADED-HOPPERCONNECTIONRANGE% - Returns the upgraded stat
+# %UPGRADED-SECONDSPERPICKUP% - Returns the upgraded stat
+# %UPGRADE-COST% - Retruns cost to upgrade
+    HopperMaxUpgraded:
+      type: HOPPER
+      name: "&cHopper Stats &6(Max Upgraded)"
+      slot: 12
+      condition: MAXUPGRADED # = Has no further upgrade
+      action: UPGRADE
+      lore:
+        - "&aTier: &2%TIER% &C(MAX)"
+        - "&6Suction Range: &e%HOPPERSUCTIONRANGE%"
+        - "&6Hopper Connection Range: &e%HOPPERCONNECTIONRANGE%"
+        - "&6Pickup Rate: &e%SECONDSPERPICKUP%&6s"
+        - "&6Linked To Container: &e%LINKED%"
+        - " "
+        - "&CThis hopper is already"
+        - "&Cmaximum upgrade."
+    HopperUppgradable:
+      type: HOPPER
+      name: "&cHopper Stats"
+      slot: 12
+      condition: UPGRADEABLE # = Has an upgrade
+      action: UPGRADE
+      lore:
+        - "&aTier: &2%TIER%"
+        - "&6Suction Range: &e%HOPPERSUCTIONRANGE% &c> &e%UPGRADED-HOPPERSUCTIONRANGE%"
+        - "&6Hopper Connection Range: &e%HOPPERCONNECTIONRANGE% &c> &e%UPGRADED-HOPPERCONNECTIONRANGE%"
+        - "&6Pickup Rate: &e%SECONDSPERPICKUP%&6s &c > &e%UPGRADED-SECONDSPERPICKUP%&6s"
+        - "&6Linked To Container: &e%LINKED%"
+        - " "
+        - "&aCLICK TO UPGRADE HOPPER"
+        - "&aCOST &6$&e%UPGRADE-COST%"
+#Filter upgrade button
+    FilterButtonWhitelist:
+      type: PAPER
+      name: "&cHopper Filter"
+      slot: 14
+      condition: WHITELIST
+      action: FILTER
+      lore:
+        - "&6Setting: &aWHITELIST"
+        - " "
+        - "&6Items found in the next page"
+        - "&6will be the only items"
+        - "&6the hopper is able to collect"
+        - " "
+        - "&7(Click to go to Filter Page)"
+        - "&7(SHIFT-CLICK TO TOGGLE SETTING)"
+    FilterButtonBlacklist:
+      type: PAPER
+      name: "&cHopper Filter"
+      slot: 14
+      condition: BLACKLIST
+      action: FILTER
+      lore:
+        - "&6Setting: &cBLACKLIST"
+        - " "
+        - "&6Items found in the next page"
+        - "&6will be items ignored"
+        - "&6and will not be picked up"
+        - " "
+        - "&7(Click to go to Filter Page)"
+        - "&7(SHIFT-CLICK TO TOGGLE SETTING)"
+#Teleport Button
+    TeleportNoPermission:
+      type: END_PORTAL_FRAME
+      name: "&cTeleport"
+      slot: 16
+      condition: NOPERMISSION
+      action: TELEPORT
+      lore:
+        - "&cYou do not have the required"
+        - "&cpermission &4(jetshoppers.default.teleport)&c"
+        - "&cIn order to use this feature!"
+    TeleportNoLinkedHopper:
+      type: END_PORTAL_FRAME
+      name: "&cTeleport"
+      slot: 16
+      condition: NOLINKEDBLOCK
+      action: TELEPORT
+      lore:
+        - "&cThere is no linked hopper"
+        - "&cto this hopper, therefor you cannot"
+        - "&cuse it to teleport! Link a hopper first."
+    TeleportEnabled:
+      type: END_PORTAL_FRAME
+      name: "&cTeleport"
+      slot: 16
+      condition: ENABLED #Telporting to another hopper is enabled
+      action: TELEPORT
+      lore:
+        - "&2Teleporting: &aEnabled"
+        - " "
+        - "&7Jump on this hopper and sneak to"
+        - "&7teleport to its connected hopper!"
+        - " "
+        - "&7Right Click to Toggle!"
+    TeleportDisabled:
+      type: END_PORTAL_FRAME
+      name: "&cTeleport"
+      slot: 16
+      condition: DISABLED #Telporting to another hopper is enabled
+      action: TELEPORT
+      lore:
+        - "&2Teleporting: &cDisabled"
+        - " "
+        - "&7Right Click to Toggle!"
+
+#The Filter inventory, works similar to the one above
+#All free spots are places where people will be able to place items into
+FilterInventory:
+  slots: 27 #Must be a multiple of 9
+  GUIName: "&bFilter Inventory"
+  Items:
+    InfoItemWhitelist:
+      type: PAPER
+      name: "&cInformation"
+      slot: 22
+      condition: WHITELIST
+      action: NONE
+      lore:
+        - "&6Setting: &aWHITELIST"
+        - " "
+        - "&7Add items to this inventory to"
+        - "&7add them to the whitelist!"
+        - " "
+        - "&7This means the hopper will only"
+        - "&7pickup items on this whitelist!"
+    InfoItemBlacklist:
+      type: PAPER
+      name: "&cInformation"
+      slot: 22
+      condition: BLACKLIST
+      action: NONE
+      lore:
+        - "&6Setting: &cBLACKLIST"
+        - " "
+        - "&7Add items to this inventory to"
+        - "&7add them to the blacklist!"
+        - " "
+        - "&7This means the hopper will pickup"
+        - "&7all items, apart from those specified"
+        - "&7on this list!"
+    Back:
+      type: BARRIER
+      name: "&cBACK"
+      slot: 18
+      condition: NONE
+      action: BACK
+      lore:
+        - "&CBack to main page!"
+        - " "
+        - "&7(Click)"
+#Filler items work abit different in this, as there needs to be a few free slots for the user to put items into the inventory
+#Similar to the top filler item, just a range needs to be specified
+    FillerItem18:
+      type: GRAY_STAINED_GLASS_PANE
+      name: " "
+      slot: 18
+      condition: NONE
+      action: FILLER
+      lore: []
+    FillerItem19:
+      type: GRAY_STAINED_GLASS_PANE
+      name: " "
+      slot: 19
+      condition: NONE
+      action: FILLER
+      lore: []
+    FillerItem20:
+      type: GRAY_STAINED_GLASS_PANE
+      name: " "
+      slot: 20
+      condition: NONE
+      action: FILLER
+      lore: []
+    FillerItem21:
+      type: GRAY_STAINED_GLASS_PANE
+      name: " "
+      slot: 21
+      condition: NONE
+      action: FILLER
+      lore: []
+    FillerItem22:
+      type: GRAY_STAINED_GLASS_PANE
+      name: " "
+      slot: 22
+      condition: NONE
+      action: FILLER
+      lore: []
+    FillerItem23:
+      type: GRAY_STAINED_GLASS_PANE
+      name: " "
+      slot: 23
+      condition: NONE
+      action: FILLER
+      lore: []
+    FillerItem24:
+      type: GRAY_STAINED_GLASS_PANE
+      name: " "
+      slot: 24
+      condition: NONE
+      action: FILLER
+      lore: []
+    FillerItem25:
+      type: GRAY_STAINED_GLASS_PANE
+      name: " "
+      slot: 25
+      condition: NONE
+      action: FILLER
+      lore: []
+    FillerItem26:
+      type: GRAY_STAINED_GLASS_PANE
+      name: " "
+      slot: 26
+      condition: NONE
+      action: FILLER
+      lore: []

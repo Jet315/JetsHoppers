@@ -1,0 +1,40 @@
+HelpCommand:
+  - "&7&m----------&r &bJetsHoppers&7 &m---------"
+  - "&aJetsHoppers give <player> <hopper> <Amount> &7Gives a specified player a hopper"
+  - "&aJetsHoppers about &7Displays information about the plugin"
+  - "&7&m-----------------------------------------"
+
+#%TYPE% and %AMOUNT% can be used
+GivenHoppers: "&aYou have been given &2%AMOUNT%&ax tier &2%TYPE%&a hoppers"
+
+
+# -- Upgrade Stuff --
+#%MONEY_NEEDED% for the money needed
+UpgradeNotEnoughMoney: "&cYou do not have the required funds to do this!"
+#%OLDTIER% and %NEWTIER% can be used as placeholders
+UpgradeHopperMessage: "&aYou have upgraded this hopper from %OLDTIER% to %NEWTIER%"
+UpgradeMaxAlready: "&cThis hopper is already maximum level!"
+
+
+# -- Link Hopper Stuff --
+UnlinkedHopper: "&aYou have unlinked this hopper to its container"
+LinkHopper: "&aRight click a chest or hopper to connect a container to this hopper!"
+LinkExpire: "&aLink Hopper Expired. You took too long to select a container!"
+SuccessfullyLinkedContainer: "&aYou have successfully linked this container to the hopper!"
+
+# -- Teleport Stuff --
+DisabledTeleportaion: "&6You have &cDisabled &6teleportation for this hopper!"
+EnabledTeleportation: "&6You have &aEnabled &6teleportation"
+Teleported: "&aWooosh!"
+
+# -- Filter Stuff --
+FilterToWhitelist: "&cYou have toggled so the hopper will only collect certain items!"
+FilterToBlacklist: "&cYou have toggled so the hopper will pickup all items, apart from those specified!"
+#%MATERIAL% can be used as the name of the item
+BadInputItem: "&c%MATERIAL% &ecannot be added as it is damaged, repair it before adding it to the filter list!"
+
+# Other
+ErrorOccurred: "&CAn error occured, please try again"
+NoPermission: "&cSorry, you do not have the permission for this!"
+UnknownCommand: "&cThe command is unknown"
+VaultNotInstalled: "&cYou cannot do this as Vault is not installed. Please contact an administrator."
