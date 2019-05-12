@@ -1,2 +1,2 @@
 # JetsHoppers
-A repo for JetsHoppers on Spigot
+The configuration files for my JetsHoppers plugin
