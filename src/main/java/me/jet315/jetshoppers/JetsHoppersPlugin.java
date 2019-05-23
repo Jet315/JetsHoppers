@@ -45,13 +45,6 @@ public class JetsHoppersPlugin extends JavaPlugin implements me.jet315.jetshoppe
     private GUIManager guiManager;
     private InventoryLinkManager linkManager;
 
-    /*
-    TODO:
-    STATS - make use of
-    Filter inventory - incorrect setting carried forward
-    something to do with block-breaking not working, hopper still registered
-     */
-
 
     @Override
     public void onEnable() {
